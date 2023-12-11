@@ -1,11 +1,18 @@
 package com.library.management.project.librarymanaegmentsystem.Model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
-
+@Builder
+@NoArgsConstructor
+@Data
+@AllArgsConstructor
 @Entity
 public class Transaction {
     @Id

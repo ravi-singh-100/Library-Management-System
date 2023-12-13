@@ -6,9 +6,12 @@ import com.library.management.project.librarymanaegmentsystem.Service.ServiceInt
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
-
+@Service
 public class StudentService implements StudentServiceInterface {
     @Autowired
     StudentRepo studentRepo;
@@ -21,7 +24,12 @@ public class StudentService implements StudentServiceInterface {
     @Override
     public ResponseEntity<Student> getStudentById(int studentId) {
       Student student= studentRepo.findById(studentId).orElse(null);
-
       return new ResponseEntity<>(student,HttpStatusCode.valueOf(200));
     }
+
+    @Override
+    public ResponseEntity<List<Student>> getAllStudent() {
+        return new ResponseEntity<>(studentRepo.findAll(),HttpStatusCode.valueOf(200));
+    }
+
 }

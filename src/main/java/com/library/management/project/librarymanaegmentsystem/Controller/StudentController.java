@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/student")
 public class StudentController {
@@ -20,5 +22,9 @@ public class StudentController {
     @GetMapping("/{studentId}")
     public ResponseEntity<Student> getStudentById(@PathVariable("studentId") int studentId){
         return studentServiceInterface.getStudentById(studentId);
+    }
+    @GetMapping("/all")
+    public ResponseEntity<List<Student>>getAllStudent(){
+        return studentServiceInterface.getAllStudent();
     }
 }

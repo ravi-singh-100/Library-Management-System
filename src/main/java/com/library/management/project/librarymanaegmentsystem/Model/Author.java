@@ -1,5 +1,6 @@
 package com.library.management.project.librarymanaegmentsystem.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
@@ -22,18 +23,18 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int authorId;
 
-    @Column(length = 20)
+    @Column(length = 30)
     private  String authorName;
-
     @Column(unique = true,nullable = false)
     @Email
     private String email;
-
     @OneToMany(mappedBy = "author")
+    @JsonIgnoreProperties(value = {"author", "createdOn", "updatedOn","student"})
     private List<Book> bookList;
     @CreationTimestamp
     private Date createdOn;
     @UpdateTimestamp
     private Date updatedOn;
+
 
 }

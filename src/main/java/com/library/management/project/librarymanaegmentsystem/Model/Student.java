@@ -1,5 +1,6 @@
 package com.library.management.project.librarymanaegmentsystem.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import jakarta.validation.constraints.Email;
@@ -28,9 +29,11 @@ public class Student {
     @Column(nullable = false,unique = true)
     private String email;
     @OneToMany(mappedBy ="student" )
+    @JsonIgnoreProperties(value = "student")
     private List<Book> bookList;
     @OneToMany(mappedBy = "student")
-    private List<Transaction> transaction;
+    @JsonIgnoreProperties(value = "student")
+    private List<Transaction> transactionList;
     @CreationTimestamp
     private Date createdOn;
     @UpdateTimestamp

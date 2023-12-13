@@ -1,5 +1,6 @@
 package com.library.management.project.librarymanaegmentsystem.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,9 +21,11 @@ public class Transaction {
     private int transactionId;
     @ManyToOne
     @JoinColumn(name = "bookId")
+    @JsonIgnoreProperties(value = "transactionList")
 private Book book;
     @ManyToOne
     @JoinColumn(name = "studentId")
+    @JsonIgnoreProperties(value = "transactionList")
 private Student student;
     private Integer fine;
 @Enumerated(value = EnumType.ORDINAL)

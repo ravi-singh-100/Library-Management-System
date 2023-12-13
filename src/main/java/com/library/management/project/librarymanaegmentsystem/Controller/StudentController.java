@@ -20,7 +20,7 @@ public class StudentController {
         return  studentServiceInterface.createStudent(studentWrapper.covertToStudent());
     }
     @GetMapping("/{studentId}")
-    public ResponseEntity<Student> getStudentById(@PathVariable("studentId") int studentId){
+    public Student getStudentById(@PathVariable("studentId") int studentId){
         return studentServiceInterface.getStudentById(studentId);
     }
     @GetMapping("/all")

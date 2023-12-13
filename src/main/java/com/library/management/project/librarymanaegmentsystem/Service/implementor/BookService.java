@@ -27,9 +27,10 @@ public class BookService implements BookServiceInterface {
     }
 
     @Override
-    public ResponseEntity<Book> getBookById(int bookId) {
-      return new ResponseEntity<>(bookRepo.findById(bookId).orElse(null),HttpStatusCode.valueOf(200));
-
+    public Book getBookById(int bookId) {
+        Book book=bookRepo.findById(bookId).orElse(null);
+     return book;
+//      return new ResponseEntity<>(book,HttpStatusCode.valueOf(200));
     }
 
     @Override

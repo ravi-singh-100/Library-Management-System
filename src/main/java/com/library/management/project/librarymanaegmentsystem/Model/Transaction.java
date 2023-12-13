@@ -17,23 +17,24 @@ import java.util.Date;
 @Entity
 public class Transaction {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int transactionId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String transactionId;
     @ManyToOne
     @JoinColumn(name = "bookId")
-    @JsonIgnoreProperties(value = "transactionList")
+    @JsonIgnoreProperties(value = {"transactionList","student","createdOn","updatedOn","author"})
 private Book book;
     @ManyToOne
     @JoinColumn(name = "studentId")
-    @JsonIgnoreProperties(value = "transactionList")
+    @JsonIgnoreProperties(value = {"transactionList","createdOn","updatedOn"})
 private Student student;
-    private Integer fine;
-@Enumerated(value = EnumType.ORDINAL)
+    private int fine;
+@Enumerated(value = EnumType.STRING)
 private TransactionStatus transactionStatus;
-@Enumerated(value = EnumType.ORDINAL)
+@Enumerated(value = EnumType.STRING)
 private TransactionType transactionType;
 @CreationTimestamp
-    private Date createOn;
+    private Date createdOn;
 @UpdateTimestamp
     private Date updatedOn;
 }

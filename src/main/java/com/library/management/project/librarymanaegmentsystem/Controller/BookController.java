@@ -21,7 +21,7 @@ public class BookController {
         return bookServiceInterface.createBook(bookWrapper.bookWrapperToBook());
     }
     @GetMapping("/{bookId}")
-    public ResponseEntity<Book> getBookById(@PathVariable("bookId") int bookId){
+    public Book getBookById(@PathVariable("bookId") int bookId){
         return bookServiceInterface.getBookById(bookId);
     }
     @GetMapping("/all")

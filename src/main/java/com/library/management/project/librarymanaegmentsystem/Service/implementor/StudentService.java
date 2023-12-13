@@ -22,10 +22,12 @@ public class StudentService implements StudentServiceInterface {
     }
 
     @Override
-    public ResponseEntity<Student> getStudentById(int studentId) {
+    public Student getStudentById(int studentId) {
       Student student= studentRepo.findById(studentId).orElse(null);
-      return new ResponseEntity<>(student,HttpStatusCode.valueOf(200));
+//      return new ResponseEntity<>(student,HttpStatusCode.valueOf(200));
+        return student;
     }
+
 
     @Override
     public ResponseEntity<List<Student>> getAllStudent() {

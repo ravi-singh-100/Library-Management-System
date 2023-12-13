@@ -11,7 +11,7 @@ public interface BookServiceInterface {
     ResponseEntity<String> createBook(Book book);
 
 
-    ResponseEntity<Book> getBookById(int bookId);
+    Book getBookById(int bookId);
 
 
     ResponseEntity<List<Book>> getAllBook();

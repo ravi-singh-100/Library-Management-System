@@ -11,7 +11,7 @@ import java.util.List;
 public interface StudentServiceInterface {
     ResponseEntity<String> createStudent(Student student);
 
-    ResponseEntity<Student> getStudentById(int studentId);
+    Student getStudentById(int studentId);
 
     ResponseEntity<List<Student>> getAllStudent();
 }

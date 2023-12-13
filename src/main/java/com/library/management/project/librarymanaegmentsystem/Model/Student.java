@@ -20,7 +20,7 @@ import java.util.List;
 @Entity
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int studentId;
     @Column(length = 40)
     private String studentName;
@@ -29,10 +29,10 @@ public class Student {
     @Column(nullable = false,unique = true)
     private String email;
     @OneToMany(mappedBy ="student" )
-    @JsonIgnoreProperties(value = "student")
+    @JsonIgnoreProperties(value ={ "student","transactionList","createdOn","updatedOn"})
     private List<Book> bookList;
     @OneToMany(mappedBy = "student")
-    @JsonIgnoreProperties(value = "student")
+    @JsonIgnoreProperties(value = {"student","createdOn","updatedOn"})
     private List<Transaction> transactionList;
     @CreationTimestamp
     private Date createdOn;
